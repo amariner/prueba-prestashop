@@ -15,7 +15,7 @@ test("home, catalog, search and native cart work", async ({
   await expect(
     page.getByRole("heading", { name: "Multiusos cítrico", exact: true }),
   ).toBeVisible();
-  await page.locator('[data-button-action="add-to-cart"]').click();
+  await page.locator('.product__add-to-cart-button').click();
   await expect(page.locator("#blockcart-modal")).toBeVisible();
   await page.locator('#blockcart-modal a.btn-primary').click();
   await expect(
@@ -31,7 +31,7 @@ test("home, catalog, search and native cart work", async ({
 test("guest checkout records a fictitious order without payment", async ({ page }) => {
   await page.goto("/");
   await page.locator(".brisa-product-card").first().locator("h3 a").click();
-  await page.locator('[data-button-action="add-to-cart"]').click();
+  await page.locator('.product__add-to-cart-button').click();
   await page.locator('#blockcart-modal a.btn-primary').click();
   await page.locator('.js-cart-detailed-actions a.btn-primary').click();
   const customer = page.locator('#customer-form');

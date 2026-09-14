@@ -12,8 +12,12 @@ test('administrator can access the real management panel', async ({ page }) => {
   test.skip(!email || !password, 'Provide administrator credentials through the environment');
   await page.goto('/admin-brisa/');
   const form = page.locator('form').filter({ has: page.locator('input[type=password]') }).first();
-  await form.locator('input[type=email]').fill(email);
-  await form.locator('input[type=password]').fill(password);
-  await form.locator('button[type=submit]').click();
+  try {
+    await form.locator('input[type=email]').fill(email);
+    await form.locator('input[type=password]').fill(password);
+    await form.locator('button[type=submit]').click();
+  } catch {
+    throw new Error('Unable to submit administration credentials');
+  }
   await expect(page.locator('.main-menu')).toBeVisible({ timeout: 30000 });
 });

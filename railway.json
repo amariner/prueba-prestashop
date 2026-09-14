@@ -1,6 +1,18 @@
 {
   "$schema": "https://schema.up.railway.app/railway.schema.json",
-  "build": { "builder": "DOCKERFILE", "dockerfilePath": "Dockerfile" },
+  "build": {
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "Dockerfile",
+    "watchPatterns": [
+      "/Dockerfile",
+      "/docker/**",
+      "/scripts/**",
+      "/themes/**",
+      "/modules/**",
+      "/catalog/**",
+      "/railway.json"
+    ]
+  },
   "deploy": {
     "healthcheckPath": "/health",
     "healthcheckTimeout": 600,
@@ -8,7 +20,9 @@
     "restartPolicyMaxRetries": 3,
     "numReplicas": 1,
     "multiRegionConfig": {
-      "europe-west4-drams3a": { "numReplicas": 1 }
+      "europe-west4-drams3a": {
+        "numReplicas": 1
+      }
     }
   }
 }
