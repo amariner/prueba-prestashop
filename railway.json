@@ -23,6 +23,7 @@
       "europe-west4-drams3a": {
         "numReplicas": 1
       }
-    }
+    },
+    "region": "europe-west4-drams3a"
   }
 }
