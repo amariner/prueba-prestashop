@@ -1,0 +1,64 @@
+name: Verify PrestaShop demo
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  shop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare isolated test credentials
+        run: |
+          python3 - <<'PY'
+          import secrets
+          from pathlib import Path
+          Path('.env').write_text('\n'.join([
+            'MYSQL_ROOT_PASSWORD='+secrets.token_urlsafe(24),
+            'DB_NAME=prestashop', 'DB_USER=brisa',
+            'DB_PASSWD='+secrets.token_urlsafe(24),
+            'ADMIN_MAIL=admin@example.com',
+            'ADMIN_PASSWD='+secrets.token_urlsafe(24),
+            'PS_DOMAIN=localhost:8080', 'PS_ENABLE_SSL=0',
+          ])+'\n')
+          PY
+      - name: Validate configuration and build
+        run: |
+          bash -n docker/entrypoint.sh
+          docker compose config --quiet
+          docker compose build
+          docker compose run --rm --no-deps --entrypoint sh prestashop -c 'find /opt/brisa/scripts /var/www/html/modules/brisastore /var/www/html/modules/brisademo -name "*.php" -exec php -l {} \;'
+      - name: Install the real store
+        run: docker compose up -d --wait --wait-timeout 600
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Storefront checks
+        run: npm test
+      - name: Verify persistence across container replacement
+        run: |
+          docker compose exec -T prestashop php /opt/brisa/scripts/verify-store.php
+          docker compose up -d --force-recreate --no-deps --wait --wait-timeout 300 prestashop
+          docker compose exec -T prestashop php /opt/brisa/scripts/verify-store.php
+          curl --fail http://localhost:8080/health.php
+      - name: Container logs
+        if: failure()
+        run: docker compose logs --no-color --tail=150
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-test-results
+          path: test-results/
+          retention-days: 3
+      - name: Stop test containers
+        if: always()
+        run: docker compose down

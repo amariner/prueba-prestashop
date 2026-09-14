@@ -1,0 +1,194 @@
+{
+  "categories": [
+    {
+      "slug": "cocina",
+      "name": "Cocina",
+      "description": "Pequeños cuidados para el corazón de tu casa."
+    },
+    {
+      "slug": "bano",
+      "name": "Baño",
+      "description": "Un momento de orden y frescura, cada día."
+    },
+    {
+      "slug": "ropa",
+      "name": "Ropa",
+      "description": "El cuidado de tus prendas, de lunes a domingo."
+    },
+    {
+      "slug": "hogar",
+      "name": "Hogar",
+      "description": "Esenciales para cada rincón y cada rutina."
+    }
+  ],
+  "products": [
+    {
+      "sku": "BRISA-001",
+      "slug": "multiusos-citrico",
+      "name": "Multiusos cítrico",
+      "category": "hogar",
+      "price": 5.95,
+      "summary": "Verbena y limón · 500 ml",
+      "shape": "spray",
+      "color": "#8a9d79",
+      "background": "#ebeddf",
+      "stock": 100,
+      "weight": 0.6,
+      "description": "<p>Multiusos cítrico: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>Verbena y limón · 500 ml.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    },
+    {
+      "sku": "BRISA-002",
+      "slug": "lavavajillas-aloe",
+      "name": "Lavavajillas aloe",
+      "category": "cocina",
+      "price": 4.95,
+      "summary": "Un básico de cocina · 500 ml",
+      "shape": "pump",
+      "color": "#c4c99e",
+      "background": "#eeeee0",
+      "stock": 100,
+      "weight": 0.6,
+      "description": "<p>Lavavajillas aloe: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>Un básico de cocina · 500 ml.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    },
+    {
+      "sku": "BRISA-003",
+      "slug": "detergente-lavanda",
+      "name": "Detergente lavanda",
+      "category": "ropa",
+      "price": 9.9,
+      "summary": "Tu ritual de colada · 1 litro",
+      "shape": "jug",
+      "color": "#a5a0ba",
+      "background": "#eae7ed",
+      "stock": 100,
+      "weight": 1.1,
+      "description": "<p>Detergente lavanda: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>Tu ritual de colada · 1 litro.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    },
+    {
+      "sku": "BRISA-004",
+      "slug": "limpiador-bano",
+      "name": "Limpiador de baño",
+      "category": "bano",
+      "price": 5.5,
+      "summary": "Frescura cotidiana · 500 ml",
+      "shape": "spray",
+      "color": "#c6a38a",
+      "background": "#f0e6db",
+      "stock": 100,
+      "weight": 0.6,
+      "description": "<p>Limpiador de baño: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>Frescura cotidiana · 500 ml.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    },
+    {
+      "sku": "BRISA-005",
+      "slug": "desengrasante-cocina",
+      "name": "Desengrasante cocina",
+      "category": "cocina",
+      "price": 6.5,
+      "summary": "Después de cocinar · 500 ml",
+      "shape": "spray",
+      "color": "#d3ac73",
+      "background": "#f0e9d9",
+      "stock": 100,
+      "weight": 0.6,
+      "description": "<p>Desengrasante cocina: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>Después de cocinar · 500 ml.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    },
+    {
+      "sku": "BRISA-006",
+      "slug": "jabon-platos",
+      "name": "Jabón para platos",
+      "category": "cocina",
+      "price": 4.5,
+      "summary": "Pomelo suave · 500 ml",
+      "shape": "pump",
+      "color": "#c89476",
+      "background": "#f1e3d8",
+      "stock": 100,
+      "weight": 0.6,
+      "description": "<p>Jabón para platos: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>Pomelo suave · 500 ml.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    },
+    {
+      "sku": "BRISA-007",
+      "slug": "antical-brisa",
+      "name": "Antical Brisa",
+      "category": "bano",
+      "price": 6.95,
+      "summary": "El detalle del baño · 500 ml",
+      "shape": "spray",
+      "color": "#99ada7",
+      "background": "#e7eee8",
+      "stock": 100,
+      "weight": 0.6,
+      "description": "<p>Antical Brisa: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>El detalle del baño · 500 ml.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    },
+    {
+      "sku": "BRISA-008",
+      "slug": "jabon-manos",
+      "name": "Jabón de manos",
+      "category": "bano",
+      "price": 4.95,
+      "summary": "Oliva y romero · 300 ml",
+      "shape": "pump",
+      "color": "#809176",
+      "background": "#e8ecdf",
+      "stock": 100,
+      "weight": 0.6,
+      "description": "<p>Jabón de manos: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>Oliva y romero · 300 ml.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    },
+    {
+      "sku": "BRISA-009",
+      "slug": "suavizante-algodon",
+      "name": "Suavizante algodón",
+      "category": "ropa",
+      "price": 7.95,
+      "summary": "El final de tu colada · 1 litro",
+      "shape": "jug",
+      "color": "#c3b39a",
+      "background": "#f0eadd",
+      "stock": 100,
+      "weight": 1.1,
+      "description": "<p>Suavizante algodón: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>El final de tu colada · 1 litro.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    },
+    {
+      "sku": "BRISA-010",
+      "slug": "quitamanchas",
+      "name": "Quitamanchas diario",
+      "category": "ropa",
+      "price": 5.95,
+      "summary": "Antes de la lavadora · 500 ml",
+      "shape": "spray",
+      "color": "#b2a797",
+      "background": "#ece8e0",
+      "stock": 100,
+      "weight": 0.6,
+      "description": "<p>Quitamanchas diario: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>Antes de la lavadora · 500 ml.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    },
+    {
+      "sku": "BRISA-011",
+      "slug": "limpiacristales",
+      "name": "Limpiacristales",
+      "category": "hogar",
+      "price": 4.95,
+      "summary": "Para mirar con calma · 500 ml",
+      "shape": "spray",
+      "color": "#9eafb5",
+      "background": "#e7eef0",
+      "stock": 100,
+      "weight": 0.6,
+      "description": "<p>Limpiacristales: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>Para mirar con calma · 500 ml.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    },
+    {
+      "sku": "BRISA-012",
+      "slug": "suelos-bosque",
+      "name": "Suelos bosque",
+      "category": "hogar",
+      "price": 6.95,
+      "summary": "Cedro y pino · 1 litro",
+      "shape": "jug",
+      "color": "#617e69",
+      "background": "#e1e7da",
+      "stock": 100,
+      "weight": 1.1,
+      "description": "<p>Suelos bosque: un esencial de nuestra colección para acompañar los pequeños cuidados de tu hogar.</p><p>Cedro y pino · 1 litro.</p><p><strong>Producto ficticio de demostración.</strong> El envase, el precio y la descripción forman parte de una prueba de ecommerce. No se vende ni se envía mercancía. Las indicaciones reales de composición, uso y seguridad se incorporarían antes de una venta comercial.</p>"
+    }
+  ]
+}

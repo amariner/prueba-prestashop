@@ -1,0 +1,39 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_DATABASE: ${DB_NAME:-prestashop}
+      MYSQL_USER: ${DB_USER:-brisa}
+      MYSQL_PASSWORD: ${DB_PASSWD:?Set DB_PASSWD in .env}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: [CMD-SHELL, 'MYSQL_PWD="$$MYSQL_ROOT_PASSWORD" mysqladmin ping -h localhost -u root --silent']
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+  prestashop:
+    build: .
+    ports: ["8080:8080"]
+    env_file: .env
+    environment:
+      DB_SERVER: mysql
+      DB_PORT: 3306
+      PORT: 8080
+    volumes:
+      - shop-data:/data
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, curl, -fsS, http://localhost:8080/health.php]
+      interval: 15s
+      timeout: 5s
+      retries: 40
+      start_period: 60s
+    restart: unless-stopped
+volumes:
+  mysql-data:
+  shop-data:
