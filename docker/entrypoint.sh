@@ -27,24 +27,24 @@ if [[ ! -f "$BRISA_DATA_DIR/install-complete" ]]; then
     # Never reinstall over an existing database or silently discard customer data.
     php /opt/brisa/scripts/check-empty-db.php
     echo 'Installing PrestaShop 9.1.5 (Spanish, EUR, empty catalog)...'
-    # The upstream CLI finalizer expects admin-dev when admin was renamed in the image.
-    # A temporary alias lets it install bundle assets without changing PrestaShop core.
-    ln -sfn admin-brisa admin-dev
+    # Run supported installer steps, then install assets in our actual admin folder.
+    # The upstream finalizer assumes admin-dev if admin was already renamed.
     runuser -u www-data -- php -d memory_limit=768M install/index_cli.php \
         --domain="$PS_DOMAIN" --db_server="$DB_SERVER:${DB_PORT:-3306}" \
         --db_name="$DB_NAME" --db_user="$DB_USER" --db_password="$DB_PASSWD" \
         --prefix="${DB_PREFIX:-ps_}" --db_clear=0 --fixtures=0 \
+        --step=database,modules,theme,postInstall \
         --name=Brisa --firstname=Admin --lastname=Brisa \
         --password="$ADMIN_PASSWD" --email="$ADMIN_MAIL" \
         --language=es --country=es --all_languages=0 --timezone=Europe/Madrid \
         --ssl="${PS_ENABLE_SSL:-1}" --theme=hummingbird \
         --modules=ps_shoppingcart,ps_customersignin,ps_searchbar,ps_categorytree,ps_contactinfo,ps_customeraccountlinks,ps_linklist,ps_mainmenu,contactform,ps_facetedsearch,ps_featuredproducts,ps_emailsubscription,ps_socialfollow,blockreassurance
+    runuser -u www-data -- php bin/console assets:install admin-brisa --symlink --env=prod --no-debug
     cp app/config/parameters.php "$BRISA_DATA_DIR/config/parameters.php"
     chmod 640 "$BRISA_DATA_DIR/config/parameters.php"
     ln -sf "$BRISA_DATA_DIR/config/parameters.php" app/config/parameters.php
     touch "$BRISA_DATA_DIR/install-complete"
 fi
-if [[ -L admin-dev ]]; then rm admin-dev; fi
 rm -rf install
 chown -R www-data:www-data "$BRISA_DATA_DIR" var app/config
 runuser -u www-data -- php /opt/brisa/scripts/configure.php
