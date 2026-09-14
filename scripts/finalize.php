@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/bootstrap.php';
 // The parent theme may enable bundled modules. Keep only the demo payment method.
-foreach (['ps_checkout', 'ps_wirepayment', 'ps_checkpayment', 'ps_cashondelivery', 'ps_googleanalytics', 'ps_facebook', 'ps_eventbus', 'ps_accounts', 'psxmarketingwithgoogle', 'ps_emailsubscription', 'blockwishlist'] as $name) {
+foreach (['ps_checkout', 'ps_wirepayment', 'ps_checkpayment', 'ps_cashondelivery', 'ps_googleanalytics', 'ps_facebook', 'ps_eventbus', 'ps_accounts', 'psxmarketingwithgoogle', 'ps_emailsubscription', 'blockwishlist', 'blockreassurance'] as $name) {
     if (Module::isInstalled($name)) Module::getInstanceByName($name)->disable();
 }
 Configuration::updateValue('PS_MAIL_METHOD', 3);

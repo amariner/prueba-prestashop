@@ -207,6 +207,7 @@ h3 {
 }
 .brisa-cart-hook .header-block__badge {
   background: var(--brisa-ink);
+  color: #fff;
   font-size: 9px;
 }
 .brisa-search-panel {
