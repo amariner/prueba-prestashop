@@ -46,9 +46,9 @@ jobs:
         run: npm test
       - name: Verify persistence across container replacement
         run: |
-          docker compose exec -T prestashop php /opt/brisa/scripts/verify-store.php
+          docker compose exec -T -e BRISA_EXPECT_ORDER=1 prestashop php /opt/brisa/scripts/verify-store.php
           docker compose up -d --force-recreate --no-deps --wait --wait-timeout 300 prestashop
-          docker compose exec -T prestashop php /opt/brisa/scripts/verify-store.php
+          docker compose exec -T -e BRISA_EXPECT_ORDER=1 prestashop php /opt/brisa/scripts/verify-store.php
           curl --fail http://localhost:8080/health.php
       - name: Container logs
         if: failure()

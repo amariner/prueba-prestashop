@@ -15,7 +15,7 @@ class Brisademo extends PaymentModule
     }
     public function install()
     {
-        if (!parent::install() || !$this->registerHook('paymentOptions') || !$this->registerHook('paymentReturn')) return false;
+        if (!parent::install() || !$this->registerHook('paymentOptions') || !$this->registerHook('displayPaymentReturn')) return false;
         if (!Configuration::get('BRISA_OS_DEMO')) {
             $state = new OrderState();
             foreach (Language::getLanguages(false) as $language) $state->name[(int) $language['id_lang']] = 'Demo · Sin cobro';
@@ -42,5 +42,5 @@ class Brisademo extends PaymentModule
             ->setAdditionalInformation('<p>Productos ficticios. El pedido se guardará para probar la tienda. No introduzcas datos bancarios. No se enviará mercancía ni correo.</p>');
         return [$option];
     }
-    public function hookPaymentReturn($params) { return '<div class="alert alert-success">Pedido de prueba registrado. No se ha realizado ningún cobro ni se enviará mercancía.</div>'; }
+    public function hookDisplayPaymentReturn($params) { return '<div class="alert alert-success">Pedido de prueba registrado. No se ha realizado ningún cobro ni se enviará mercancía.</div>'; }
 }

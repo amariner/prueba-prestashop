@@ -10,3 +10,11 @@ foreach ($paymentModules as $module) {
     if ($module['name'] !== 'brisademo' && Module::isEnabled($module['name'])) throw new RuntimeException('Unexpected payment module: ' . $module['name']);
 }
 echo "PASS: 12 demo products, Brisa theme, demo payment only, email disabled.\n";
+if (getenv('BRISA_EXPECT_ORDER') === '1') {
+    $stateId = (int) Configuration::get('BRISA_OS_DEMO');
+    $orders = (int) Db::getInstance()->getValue("SELECT COUNT(*) FROM " . _DB_PREFIX_ . "orders WHERE module='brisademo' AND current_state=" . $stateId);
+    if ($orders < 1) throw new RuntimeException('Expected a completed demo checkout');
+    $state = new OrderState($stateId);
+    if ($state->paid || $state->invoice || $state->send_email) throw new RuntimeException('Demo order state must not charge, invoice or send email');
+    echo "PASS: fictitious order persisted in the unpaid demo state.\n";
+}
