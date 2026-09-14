@@ -108,6 +108,10 @@ Configuration::updateValue('BRISA_CMS', json_encode($cmsIds));
 foreach (['brisastore', 'brisademo'] as $moduleName) {
     if (!Module::isInstalled($moduleName)) brisaCheck(Module::getInstanceByName($moduleName)->install(), 'Cannot install ' . $moduleName);
 }
+// Register hooks idempotently so an interrupted initial module install can resume.
+foreach (['brisastore' => ['displayHeader', 'displayHome'], 'brisademo' => ['paymentOptions', 'paymentReturn']] as $name => $hooks) {
+    foreach ($hooks as $hook) brisaCheck(Module::getInstanceByName($name)->registerHook($hook), 'Cannot register ' . $hook);
+}
 Configuration::updateValue('PS_SHIPPING_FREE_PRICE', 35);
 Configuration::updateValue('PS_SHIPPING_HANDLING', 0);
 Configuration::updateValue('PS_GUEST_CHECKOUT_ENABLED', 1);

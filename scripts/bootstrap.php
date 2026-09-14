@@ -14,6 +14,10 @@ $context->language = new Language((int) Configuration::get('PS_LANG_DEFAULT'));
 $context->currency = new Currency((int) Configuration::get('PS_CURRENCY_DEFAULT'));
 $context->country = new Country((int) Configuration::get('PS_COUNTRY_DEFAULT'));
 $context->employee = new Employee(1);
+$kernel = new AdminKernel('prod', false);
+$kernel->boot();
+$kernel->getContainer()->get(\PrestaShop\PrestaShop\Core\Context\ContextBuilderPreparer::class)
+    ->prepareFromLegacyContext($context);
 function brisaCheck($result, string $message): void { if ($result === false) { throw new RuntimeException($message); } }
 function brisaLang(string $value): array {
     $result = [];

@@ -64,6 +64,8 @@ Variables del servicio `prestashop`:
 
 Crear el dominio antes del primer arranque. El contenedor interpreta el HTTPS del proxy Railway. `railway.json` configura el healthcheck, el plazo de instalación y el reinicio ante fallos.
 
+En este despliegue de prueba, `DB_NAME=brisa_demo`: se creó una base nueva para recuperar el primer intento de instalación interrumpido. La base original y su volcado se conservaron en MySQL; se comprobó que no tenían productos, clientes ni pedidos.
+
 ```sh
 railway link
 railway service link prestashop
