@@ -15,5 +15,9 @@ Configuration::updateValue('PS_MAIL_METHOD', 3); // Demo: do not deliver emails.
 Configuration::updateValue('PS_SHOP_ENABLE', 1);
 Configuration::updateValue('PS_REWRITING_SETTINGS', 1);
 Configuration::updateValue('PS_COOKIE_CHECKIP', 0); // Railway reverse proxy.
+// A fictitious checkout has no need to collect fiscal identification numbers.
+$spain = new Country((int) Country::getByIso('ES'));
+$spain->need_identification_number = false;
+brisaCheck($spain->update(), 'Could not configure demo address fields');
 Tools::generateHtaccess();
 echo "Domain and HTTPS configured; external mail disabled.\n";

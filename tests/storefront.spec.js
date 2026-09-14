@@ -49,6 +49,7 @@ test("guest checkout records a fictitious order without payment", async ({ page 
   await address.locator('[name=confirm-addresses]').click();
   await expect(page.locator('#js-delivery')).toContainText('Brisa · Envío de prueba');
   await page.locator('[name=confirmDeliveryOption]').click();
+  await expect(page.locator('#cart-subtotal-shipping')).toContainText('3,90');
   const payment = page.locator('[name=payment-option][data-module-name=brisademo]');
   await expect(page.locator('[name=payment-option]')).toHaveCount(1);
   await payment.check();

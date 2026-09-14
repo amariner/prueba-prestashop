@@ -51,9 +51,9 @@ runuser -u www-data -- php /opt/brisa/scripts/configure.php
 if [[ ! -f "$BRISA_DATA_DIR/seed-v1-complete" ]]; then
     runuser -u www-data -- php /opt/brisa/scripts/seed.php
     runuser -u www-data -- php bin/console prestashop:theme:enable brisa --env=prod --no-debug
-    runuser -u www-data -- php /opt/brisa/scripts/finalize.php
     touch "$BRISA_DATA_DIR/seed-v1-complete"
 fi
+runuser -u www-data -- php /opt/brisa/scripts/finalize.php
 runuser -u www-data -- php bin/console cache:clear --env=prod --no-debug --no-warmup
 touch "$BRISA_DATA_DIR/ready"
 echo 'Brisa is ready. Starting Apache.'
