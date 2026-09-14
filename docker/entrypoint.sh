@@ -27,6 +27,9 @@ if [[ ! -f "$BRISA_DATA_DIR/install-complete" ]]; then
     # Never reinstall over an existing database or silently discard customer data.
     php /opt/brisa/scripts/check-empty-db.php
     echo 'Installing PrestaShop 9.1.5 (Spanish, EUR, empty catalog)...'
+    # The upstream CLI finalizer expects admin-dev when admin was renamed in the image.
+    # A temporary alias lets it install bundle assets without changing PrestaShop core.
+    ln -sfn admin-brisa admin-dev
     runuser -u www-data -- php -d memory_limit=768M install/index_cli.php \
         --domain="$PS_DOMAIN" --db_server="$DB_SERVER:${DB_PORT:-3306}" \
         --db_name="$DB_NAME" --db_user="$DB_USER" --db_password="$DB_PASSWD" \
@@ -41,6 +44,7 @@ if [[ ! -f "$BRISA_DATA_DIR/install-complete" ]]; then
     ln -sf "$BRISA_DATA_DIR/config/parameters.php" app/config/parameters.php
     touch "$BRISA_DATA_DIR/install-complete"
 fi
+if [[ -L admin-dev ]]; then rm admin-dev; fi
 rm -rf install
 chown -R www-data:www-data "$BRISA_DATA_DIR" var app/config
 runuser -u www-data -- php /opt/brisa/scripts/configure.php
