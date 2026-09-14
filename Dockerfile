@@ -23,18 +23,18 @@ RUN curl --fail --location --retry 3 \
     && mv admin admin-brisa \
     && mkdir -p /opt/brisa/default-img \
     && cp -a img/. /opt/brisa/default-img/ \
-    && rm -rf /tmp/release.zip /tmp/package
+    && rm -rf /tmp/release.zip /tmp/package \
+    && chown -R www-data:www-data /var/www/html
 
 COPY docker/php.ini /usr/local/etc/php/conf.d/brisa.ini
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
 COPY docker/entrypoint.sh /usr/local/bin/brisa-entrypoint
 COPY scripts /opt/brisa/scripts
 COPY catalog /opt/brisa/catalog
-COPY themes/brisa /var/www/html/themes/brisa
-COPY modules /var/www/html/modules
+COPY --chown=www-data:www-data themes/brisa /var/www/html/themes/brisa
+COPY --chown=www-data:www-data modules /var/www/html/modules
 COPY docker/health.php /var/www/html/health.php
-RUN chmod +x /usr/local/bin/brisa-entrypoint \
-    && chown -R www-data:www-data /var/www/html
+RUN chmod +x /usr/local/bin/brisa-entrypoint
 
 ENV PORT=8080 PS_LANGUAGE=es PS_COUNTRY=es PS_ENABLE_SSL=1 \
     DB_PORT=3306 DB_PREFIX=ps_ BRISA_DATA_DIR=/data

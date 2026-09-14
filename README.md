@@ -1,6 +1,8 @@
 # Brisa · PrestaShop demo
 
-Tienda de limpieza en español, con PrestaShop **9.1.5**, PHP **8.4**, MySQL **8.4**, tema hijo de **Hummingbird**, doce productos ficticios y checkout sin cobro.
+Tienda de limpieza en español, con PrestaShop **9.1.5**, PHP **8.4**, MySQL, tema hijo de **Hummingbird**, doce productos ficticios y checkout sin cobro. Compose fija MySQL **8.4**; la plantilla de Railway ha creado MySQL **9.4**.
+
+Tienda: https://prestashop-production-cf43.up.railway.app · [Proyecto Railway](https://railway.com/project/ef9fdf0d-aa6e-4e55-9129-666726bd2806)
 
 ## Qué contiene
 
@@ -102,3 +104,5 @@ Antes de una tienda comercial faltan: identidad y documentación real del vended
 5. Comprueba `/health.php`, producto, carrito, checkout y administración.
 
 PrestaShop se descarga de la distribución oficial con versión y SHA-256 fijados. PrestaShop conserva su licencia OSL-3.0 y Hummingbird AFL-3.0. Las ilustraciones y la personalización Brisa son originales de esta demo.
+
+DM Sans y Manrope se sirven desde el propio proyecto. Sus licencias SIL Open Font License se incluyen en `themes/brisa/assets/fonts/`.
